@@ -1,20 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // DOM Elements
   const searchBtn = document.getElementById('search-btn');
   const searchInput = document.getElementById('search-input');
   const booksContainer = document.getElementById('books-container');
   const loadingSpinner = document.getElementById('loading-spinner');
 
-  // Initialize with popular books
   fetchPopularBooks();
 
-  // Event Listeners
   searchBtn.addEventListener('click', performSearch);
   searchInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') performSearch();
   });
 
-  // Functions
   async function fetchPopularBooks() {
     try {
       showLoading(true);
@@ -48,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function displayBooks(books) {
     booksContainer.innerHTML = '';
-    
+
     if (books.length === 0) {
       booksContainer.innerHTML = `
         <div class="no-results">
@@ -59,20 +55,20 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
       return;
     }
-    
+
     books.forEach(book => {
       const bookCard = document.createElement('div');
       bookCard.className = 'book-card';
-      
+
       const coverId = book.cover_i;
-      const coverUrl = coverId 
-        ? `https://covers.openlibrary.org/b/id/${coverId}-M.jpg` 
+      const coverUrl = coverId
+        ? `https://covers.openlibrary.org/b/id/${coverId}-M.jpg`
         : 'https://via.placeholder.com/120x160?text=No+Cover';
-      
+
       const authorNames = book.author_name ? book.author_name.join(', ') : 'Unknown Author';
       const publishYear = book.first_publish_year || 'Unknown';
       const pageCount = book.number_of_pages_median || '';
-      
+
       bookCard.innerHTML = `
         <img src="${coverUrl}" alt="${book.title}" class="book-cover" loading="lazy">
         <div class="book-info">
@@ -85,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <button class="details-btn">Details</button>
         </div>
       `;
-      
+
       booksContainer.appendChild(bookCard);
     });
   }
