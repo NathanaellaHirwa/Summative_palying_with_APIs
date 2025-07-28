@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Finder</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <div class="app-container">
+    <header class="app-header">
+      <h1><i class="fas fa-book"></i> Book Finder</h1>
+      <div class="search-container">
+        <input type="text" id="search-input" placeholder="Search books...">
+        <button id="search-btn"><i class="fas fa-search"></i> Search</button>
+      </div>
+    </header>
+
+    <main class="app-main">
+      <div class="books-container" id="books-container">
+        <!-- Books will be inserted here by JavaScript -->
+      </div>
+      
+      <div class="loading-spinner hidden" id="loading-spinner">
+        <div class="spinner"></div>
+        <p>Loading books...</p>
+      </div>
+    </main>
+
+    <footer class="app-footer">
+      <p>Powered by Open Library API</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
